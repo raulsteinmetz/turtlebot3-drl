@@ -1,0 +1,4 @@
+retrain
+dreamer clean
+td3 has a bug i think
+step sync dreamer

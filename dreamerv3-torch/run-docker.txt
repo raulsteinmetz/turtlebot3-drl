@@ -1,0 +1,1 @@
+docker run -it --rm --gpus all raul/dreamer:0.2
