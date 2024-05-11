@@ -50,31 +50,32 @@ To configure the Deep Reinforcement Learning (DRL) stages on gazebo, follow thes
 ## Training Your Agent
 - Run the gazebo simulation:
 
-  `ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage<stage>.launch.py`, set gazebo physics real time update to 5000 (5x faster) to reproduce our results!
+  `ros2 launch turtlebot3_gazebo turtle_stage<number>.py`
 
 - To train the model-free agent:
   
-   `python3 train.py --agent (ddpg or sac or sac_x or sac_x_hybrid or td3) --stage (from 1 to 4 currently)`
+   `python3 train.py --agent <name> --stage <number>`
+  
 - To train Dreamer v3:
   
    `python3 dreamer.py --configs turtle --task turtle --logdir ./logdir/turtle (TODO: add stage parameter)`
 
 ## Plot learning curve
 
-`python3 learning_curve.py --agent (ddpg or sac or sac_x or sac_x_hybrid or td3) --stage (from 1 to 4 currently)`
+`python3 learning_curve.py --agent <name> --stage <number>`
 
 ## Testing Your Agent
 - Run the gazebo simulation:
 
-  `ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage<stage>.launch.py`, set gazebo physics real time update to 5000 (5x faster) to reproduce our results!
+   `ros2 launch turtlebot3_gazebo turtle_stage<number>.py`
 
 - To test the model-free agent:
   
-   `python3 test.py --agent (ddpg or sac or sac_x or sac_x_hybrid or td3) --stage (from 1 to 4 currently)`
+   `python3 test.py --agent <name> --stage <number>`
 
  ## Moving the model you've just trained to the best models folder
   
-   `python3 save_to_best.py --agent (ddpg or sac or sac_x or sac_x_hybrid or td3) --stage (from 1 to 4 currently)`
+   `python3 save_to_best.py --agent <name> --stage <number>`
 
 
 ## Folder Structure
