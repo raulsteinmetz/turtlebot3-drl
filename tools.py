@@ -27,7 +27,7 @@ def make_agent(env: Turtle, configs: dict, test: bool = False):
             reward_scale=configs['reward_scale'],
             min_action=-1, # checkout how this is used
             checkpoint_dir=configs['checkpoint_dir'] + '/' + 'stage' + \
-                str(configs['stage']) if not test else 'best_models/' + \
+                str(configs['stage']) if not test else f'best_models_lidar{configs['lidar']}/' + \
                     configs['agent'] + '/stage' + str(configs['stage'])
         )
     elif configs['agent'] == 'ddpg':
@@ -47,7 +47,7 @@ def make_agent(env: Turtle, configs: dict, test: bool = False):
             max_action=1,
             min_action=-1, # checkout how this is used
             checkpoint_dir=configs['checkpoint_dir'] + '/' + 'stage' + \
-                str(configs['stage']) if not test else 'best_models/' + \
+                str(configs['stage']) if not test else f'best_models_lidar{configs['lidar']}/' + \
                     configs['agent'] + '/stage' + str(configs['stage'])
         )
     elif configs['agent'] == 'td3':
@@ -70,7 +70,7 @@ def make_agent(env: Turtle, configs: dict, test: bool = False):
             batch_size=configs['batch_size'],
             noise=configs['noise'],
             checkpoint_dir=configs['checkpoint_dir'] + '/' + 'stage' + \
-                str(configs['stage']) if not test else 'best_models/' + \
+                str(configs['stage']) if not test else f'best_models_lidar{configs['lidar']}/' + \
                     configs['agent'] + '/stage' + str(configs['stage'])
         )
     elif configs['agent'] == 'sac_x_hybrid':
@@ -89,7 +89,7 @@ def make_agent(env: Turtle, configs: dict, test: bool = False):
             reward_scale=configs['reward_scale'],
             min_action=-1, # checkout how this is used
             checkpoint_dir=configs['checkpoint_dir'] + '/' + 'stage' + \
-                str(configs['stage']) if not test else 'best_models/' + \
+                str(configs['stage']) if not test else f'best_models_lidar{configs['lidar']}/' + \
                     configs['agent'] + '/stage' + str(configs['stage']),
             num_skills=configs['num_skills']
         )
@@ -109,7 +109,7 @@ def make_agent(env: Turtle, configs: dict, test: bool = False):
             reward_scale=configs['reward_scale'],
             min_action=-1, # checkout how this is used
             checkpoint_dir=configs['checkpoint_dir'] + '/' + 'stage' + \
-                str(configs['stage']) if not test else 'best_models/' + \
+                str(configs['stage']) if not test else f'best_models_lidar{configs['lidar']}/' + \
                     configs['agent'] + '/stage' + str(configs['stage']),
             num_skills=configs['num_skills']
         )

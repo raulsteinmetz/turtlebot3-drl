@@ -81,6 +81,7 @@ if __name__ == '__main__':
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
     parser.add_argument('--episodes', type=int, default=100, help='Specify the number of test episodes')
     parser.add_argument('--max_steps', type=int, default=250, help='Specify the step limit (for episodes)')
+    parser.add_argument('--lidar', type=int, default=10, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
     configs = {}
@@ -90,6 +91,8 @@ if __name__ == '__main__':
     configs['test_episodes'] = args.episodes
     configs['max_steps'] = args.max_steps
     configs['test'] = True
+    configs['lidar'] = args.lidar
+    
 
     with open('configs.yaml', 'r') as file:
         config_data = yaml.safe_load(file)

@@ -17,7 +17,7 @@ def plot_learning_curve(fpath):
     plt.title('Learning Curve (Episodes)')
     plt.legend()
     plt.grid(True)
-    plt.savefig(f'plots/{args.agent}/stage{args.stage}_episodes.pdf')
+    plt.savefig(f'plots/lidar{args.lidar}/{args.agent}/stage{args.stage}_episodes.pdf')
     plt.close()
     
     plt.figure(figsize=(10, 5))
@@ -28,14 +28,15 @@ def plot_learning_curve(fpath):
     plt.title('Learning Curve (Episodes)')
     plt.legend()
     plt.grid(True)
-    plt.savefig(f'plots/{args.agent}/stage{args.stage}_steps.pdf')
+    plt.savefig(f'plots/lidar{args.lidar}/{args.agent}/stage{args.stage}_steps.pdf')
     plt.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot agent's training learning curve")
     parser.add_argument('--agent', type=str, default='sac', help='Specify the RL agent (sac, ddpg, td3, sac_x_hybrid, sac_x)')
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
+    parser.add_argument('--lidar', type=int, default=10, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
-    fpath = f'best_models/{args.agent}/stage{args.stage}/train.csv'
+    fpath = f'best_models_lidar{args.lidar}/{args.agent}/stage{args.stage}/train.csv'
     plot_learning_curve(fpath)

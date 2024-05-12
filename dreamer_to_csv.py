@@ -33,8 +33,9 @@ def build_csv(fpath: str, save_to: str):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Build dreamer train csv from .npz's")
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
+    parser.add_argument('--lidar', type=int, default=10, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
-    fpath = f'./dreamerv3-torch/logdir/stage{args.stage}/train_eps'
-    save_to = f'./best_models/dreamer/stage{args.stage}/train.csv'
+    fpath = f'./dreamerv3-torch/logdir/stage{args.stage}_l{args.lidar}/train_eps'
+    save_to = f'./best_models_lidar{args.lidar}/dreamer/stage{args.stage}/train.csv'
     build_csv(fpath, save_to)
