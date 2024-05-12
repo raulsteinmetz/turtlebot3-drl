@@ -63,7 +63,7 @@ def test(agent, env):
 
 def main(args=None):
     rclpy.init()
-    env = make_env(configs['stage'], configs['max_steps'])
+    env = make_env(configs['stage'], configs['max_steps'], configs['lidar'])
     agent = make_agent(env, configs, test=True)
     
     test(

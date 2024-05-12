@@ -20,6 +20,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     fpath1 = f'models/{args.agent}/stage{args.stage}/'
-    fpath2 = f'best_models_lidar{str(args.lidar)}/{args.agent}/stage{args.stage}/'
+    fpath2 = f'best_models/lidar{str(args.lidar)}/{args.agent}/stage{args.stage}/'
 
     copy(fpath1, fpath2)

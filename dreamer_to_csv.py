@@ -37,5 +37,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     fpath = f'./dreamerv3-torch/logdir/stage{args.stage}_l{args.lidar}/train_eps'
-    save_to = f'./best_models_lidar{args.lidar}/dreamer/stage{args.stage}/train.csv'
+    save_to = f'./best_models/lidar{args.lidar}/dreamer/stage{args.stage}/train.csv'
     build_csv(fpath, save_to)

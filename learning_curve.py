@@ -38,5 +38,5 @@ if __name__ == '__main__':
     parser.add_argument('--lidar', type=int, default=10, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
-    fpath = f'best_models_lidar{args.lidar}/{args.agent}/stage{args.stage}/train.csv'
+    fpath = f'best_models/lidar{args.lidar}/{args.agent}/stage{args.stage}/train.csv'
     plot_learning_curve(fpath)

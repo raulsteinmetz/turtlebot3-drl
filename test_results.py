@@ -3,7 +3,7 @@ import pandas as pd
 
 def print_test_results(agents, stage, lidar):
     for agent in agents:
-        fpath = f'best_models_lidar{lidar}/{agent}/stage{stage}/test.csv'
+        fpath = f'best_models/lidar{lidar}/{agent}/stage{stage}/test.csv'
         data = pd.read_csv(fpath)
         
         total_scores = len(data['reward'])

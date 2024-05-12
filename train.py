@@ -101,7 +101,7 @@ def train(agent, env):
 
 def main(args=None):
     rclpy.init()
-    env = make_env(configs['stage'], configs['max_steps_per_episode'])
+    env = make_env(configs['stage'], configs['max_steps_per_episode'], configs['lidar'])
     agent = make_agent(env, configs)
     
     _, _ = train(
@@ -118,6 +118,7 @@ if __name__ == '__main__':
     parser.add_argument('--agent', type=str, default='sac', help='Specify the RL agent (sac, ddpg, td3, sac_x_hybrid, sac_x)')
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
     parser.add_argument('--load', type=bool, default=False, help='Load agent network models: True, False')
+    parser.add_argument('--lidar', type=int, default=10, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
     configs = {}
@@ -126,6 +127,7 @@ if __name__ == '__main__':
     configs['stage'] = args.stage
     configs['load_models'] = args.load
     configs['test'] = False
+    configs['lidar'] = args.lidar
 
     with open('configs.yaml', 'r') as file:
         config_data = yaml.safe_load(file)

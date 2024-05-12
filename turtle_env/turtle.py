@@ -19,7 +19,6 @@ from gym import spaces
 
 
 REACH_TRESHOLD = 0.4
-LIDAR_DISCRETIZATION = 360
 LIDAR_MAX_RANGE = 3.5
 COLISION_TRESHOLD = 0.2
 EASE_DECAY = 0.005
@@ -53,7 +52,7 @@ class Env(Node):
     A class representing the environment in which the TurtleBot operates. It is a ROS node 
     that interacts with the Gazebo simulation environment.
     """
-    def __init__(self, stage, max_steps):
+    def __init__(self, stage, max_steps, lidar):
         """
         Initialize the environment node.
         """
@@ -76,7 +75,7 @@ class Env(Node):
         
 
         self.reset_info()
-        self.init_properties(stage, max_steps)
+        self.init_properties(stage, max_steps, lidar)
 
     def pause_simulation(self):
         """
@@ -115,7 +114,7 @@ class Env(Node):
         self.odom_data = None
         self.scan_data = None
 
-    def init_properties(self, stage, max_steps):
+    def init_properties(self, stage, max_steps, lidar):
         """
         Initialize the properties of the environment.
         """
@@ -130,6 +129,7 @@ class Env(Node):
 
         self.stage = stage
         self.max_steps = max_steps
+        self.lidar = lidar
 
     def odom_callback(self, msg):
         """
@@ -173,7 +173,7 @@ class Env(Node):
         distance_to_target = math.sqrt((self.target_x - turtle_x) ** 2 + (self.target_y - turtle_y) ** 2)
 
         lidar_readings = self.scan_data.ranges
-        num_samples = LIDAR_DISCRETIZATION
+        num_samples = self.lidar
         step = (len(lidar_readings) - 1) // (num_samples - 1)
         lidar = [lidar_readings[i * step] if lidar_readings[i * step] != float('inf') else LIDAR_MAX_RANGE for i in range(num_samples)]
         # lidar = lidar_readings.tolist()
@@ -429,15 +429,15 @@ class Env(Node):
 class Turtle(gym.Env):
     """ turtlebot environment navigation problem """
 
-    def __init__(self, stage, max_steps):
+    def __init__(self, stage, max_steps, lidar):
         super(Turtle, self).__init__()
 
-        self._env = Env(stage, max_steps)
+        self._env = Env(stage, max_steps, lidar)
 
         self.observation_space = spaces.Dict({
-            'sensor_readings': spaces.Box(low=np.zeros(LIDAR_DISCRETIZATION, dtype=np.float32),
-                                    high=np.ones(LIDAR_DISCRETIZATION, dtype=np.float32),
-                                    shape=(LIDAR_DISCRETIZATION,),
+            'sensor_readings': spaces.Box(low=np.zeros(lidar, dtype=np.float32),
+                                    high=np.ones(lidar, dtype=np.float32),
+                                    shape=(lidar,),
                                     dtype=np.float32),
             'target': spaces.Box(low=np.zeros(2, dtype=np.float32),
                                     high=np.ones(2, dtype=np.float32),
