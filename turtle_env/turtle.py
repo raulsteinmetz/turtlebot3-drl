@@ -402,7 +402,13 @@ class Env(Node):
             chosen_point = random.choice(points)
             self.target_x, self.target_y = chosen_point
 
-        return self.target_x, self.target_y
+        elif self.stage == 5:
+            points = [
+                (0, 0.8), (0, -0.8), (0.8, -0.8), (-0.8, 0.8), (-0.8, -1.95), (-1.8, -1.95), (-0.8, 1.95), (-1.8, 1.95), (-1.95, -0.8), (1.95, -1.8), (1.5, -1.8), (1.0, -1.8), (-1.5, 1.8), (-1.0, 1.8), (1.95, 1.95), (1.7, 1.95), (1.95, 0.9), (-1.6, 0.4), (1.6, -0.9), (1.6, -1.3), (0.8, 1.95),(-1.95, -1)
+                    
+            ]
+            chosen_point = random.choice(points)
+            self.target_x, self.target_y = chosen_point
 
         return self.target_x, self.target_y
 
