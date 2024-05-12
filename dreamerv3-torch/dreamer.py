@@ -147,12 +147,12 @@ def make_dataset(episodes, config):
 def make_env(config, mode, id):
 
     
-    import envs.turtle_env as turtle
+    import envs.turtle as turtle
     import rclpy
 
     if not rclpy.ok():
         rclpy.init()
-    env = turtle.Turtle(3, 250)
+    env = turtle.Turtle(3, 250, 360)
     env = wrappers.UUID(env)
     return env
 

@@ -388,15 +388,17 @@ class Env(Node):
             chosen_point = random.choice(points)
             self.target_x, self.target_y = chosen_point
         elif self.stage == 4:
-            safe_areas = [
-                {'x': (-1.9, -1.2), 'y': (-1.9, 1.9)},   # safe left
-                {'x': (1.2, 1.9), 'y': (-1.9, 1.9)},     # safe right
-                {'x': (-1.1, 1.1), 'y': (1.2, 1.9)},     # upper central safe
-                {'x': (-1.1, 1.1), 'y': (-1.9, -1.2)}    # lower central safe
-            ]
-            chosen_area = random.choice(safe_areas)
-            self.target_x = random.uniform(chosen_area['x'][0], chosen_area['x'][1])
-            self.target_y = random.uniform(chosen_area['y'][0], chosen_area['y'][1])
+            points = [
+                (0, 0), (-1.6, 1), (-1.6, 1.95), (-1.7, 1.95), (-1.95, 1.95),
+                (-1.8, 1.95), (-1.7, 1.95), (-1.6, 1.95), (-1.8, 1.70), (-1.8, 1.50),
+                (-1.8, 1.20), (-1.8, 1.0), (-1.8, 0.6), (-1.8, 0.4), (-1.8, 0),
+                (-1.8, -0.4), (-1.8, -0.8), (-1.8, -1.4), (-1.8, -1.95), (-1.2, -1.95),
+                (-0.8, -1.95), (-0.4, -1.95), (0, -1.95), (0.4, -1.95),  (0.5, -1.3),
+                (1.7, -1.85), (-1.7, 1.85), (1.7, -1.85), (1.8, -0.4), (1.6, -1), (1.6, -1.95),
+                (1.8, -1.20), (1.8, -1.0),(1.8, -0.6), (1.2, -0.6), (1.2, 0.6), (0.5, 0.6),
+                (0.5, 0.95), (0.5, 1.95), (0.5, 1.6)]
+            chosen_point = random.choice(points)
+            self.target_x, self.target_y = chosen_point
 
         return self.target_x, self.target_y
 
