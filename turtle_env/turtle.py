@@ -516,11 +516,11 @@ class Turtle(gym.Env):
     
     def step(self, action):
         reward, done, obs = self._env.step(action)
-        return {'sensor_readings': obs[:360], 'target': obs[360:-2], 'velocity': obs[362:], "image": np.zeros((4, 4, 3), dtype=np.int8), 'is_first': False, 'is_last': False, 'is_terminal': done}, reward, done, {'discount': 0.99}
+        return {'sensor_readings': obs[:self._env.lidar], 'target': obs[self._env.lidar:-2], 'velocity': obs[self._env.lidar + 2:], "image": np.zeros((4, 4, 3), dtype=np.int8), 'is_first': False, 'is_last': False, 'is_terminal': done}, reward, done, {'discount': 0.99}
 
     def reset(self):
         obs = self._env.reset()
-        return {'sensor_readings': obs[:360], 'target': obs[360:-2], 'velocity': obs[362:], "image": np.zeros((4, 4, 3)), 'is_first': True, 'is_last': False, 'is_terminal': False}
+        return {'sensor_readings': obs[:self._env.lidar], 'target': obs[self._env.lidar:-2], 'velocity': obs[self._env.lidar + 2:], "image": np.zeros((4, 4, 3)), 'is_first': True, 'is_last': False, 'is_terminal': False}
 
     def close(self):
         self._env.destroy_node()

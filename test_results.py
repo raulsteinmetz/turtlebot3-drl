@@ -18,5 +18,5 @@ if __name__ == '__main__':
     parser.add_argument('--lidar', type=int, default=0, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
-    agents = ['ddpg']
+    agents = ['dreamer']
     print_test_results(agents, args.stage, args.lidar)
