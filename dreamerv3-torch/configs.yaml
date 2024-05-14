@@ -124,7 +124,7 @@ defaults:
   disag_action_cond: False
 
 turtle:
-  steps: 50000
+  steps: 100000
   action_repeat: 1
   envs: 1
   train_ratio: 512 # ??
