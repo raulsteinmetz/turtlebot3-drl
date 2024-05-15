@@ -481,8 +481,8 @@ class Env(Node):
         """
         # linear should be aways positive, the robot does not go backwards
         # angular vel is multiplied by two for better robot control
-        linear_vel = np.abs(float(action[0])) * 0.25
-        angular_vel = float(action[1]) * 2 * 0.25
+        linear_vel = np.abs(float(action[0])) * 0.1 # .25
+        angular_vel = float(action[1]) * 2 * 0.1 # .25
 
         self.publish_vel(linear_vel, angular_vel)
 
