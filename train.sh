@@ -21,5 +21,5 @@ echo "...Testing..."
 python test.py --agent $agent --stage $stage --lidar $lidar
 sleep 5
 
-echo "...Plotting learning curve..."
-python learning_curve.py --agent $agent --stage $stage --lidar $lidar
+# echo "...Plotting learning curve..."
+# python learning_curve.py --agent $agent --stage $stage --lidar $lidar
