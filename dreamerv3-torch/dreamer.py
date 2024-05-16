@@ -152,7 +152,7 @@ def make_env(config, mode, id):
 
     if not rclpy.ok():
         rclpy.init()
-    env = turtle.Turtle(2, 300, 360)
+    env = turtle.Turtle(3, 300, 360)
     env = wrappers.UUID(env)
     return env
 
@@ -258,7 +258,7 @@ def main(config):
     while agent._step < config.steps + config.eval_every:
         ctr += 1
         logger.write()
-        if config.eval_episode_num > 0 and ctr > 1: # skips the first 3 evals
+        if config.eval_episode_num > 0 and ctr > 1: # skips the first 2 evals
             print("Start evaluation.")
             eval_policy = functools.partial(agent, training=False)
             eval_ret = tools.simulate(
