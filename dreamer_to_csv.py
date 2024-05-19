@@ -36,6 +36,6 @@ if __name__ == '__main__':
     parser.add_argument('--lidar', type=int, default=0, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 
-    fpath = f'./dreamerv3-torch/logdir/stage{args.stage}_l{args.lidar}/train_eps'
+    fpath = f'./dreamerv3-torch/logdir/stage{args.stage}_{args.lidar}/train_eps'
     save_to = f'./best_models/lidar{args.lidar}/dreamer/stage{args.stage}/train.csv'
     build_csv(fpath, save_to)

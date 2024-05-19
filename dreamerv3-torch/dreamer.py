@@ -152,7 +152,7 @@ def make_env(config, mode, id):
 
     if not rclpy.ok():
         rclpy.init()
-    env = turtle.Turtle(2, 300, 10)
+    env = turtle.Turtle(5, 300, 10)
     env = wrappers.UUID(env)
     return env
 
