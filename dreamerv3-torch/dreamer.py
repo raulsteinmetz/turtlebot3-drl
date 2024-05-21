@@ -152,7 +152,7 @@ def make_env(config, mode, id):
 
     if not rclpy.ok():
         rclpy.init()
-    env = turtle.Turtle(4, 300, 360)
+    env = turtle.Turtle(6, 300, 360)
     env = wrappers.UUID(env)
     return env
 
@@ -247,6 +247,7 @@ def main(config):
     ).to(config.device)
     agent.requires_grad_(requires_grad=False)
     if (logdir / "latest.pt").exists():
+        print('loading model')
         checkpoint = torch.load(logdir / "latest.pt")
         agent.load_state_dict(checkpoint["agent_state_dict"])
         tools.recursively_load_optim_state_dict(agent, checkpoint["optims_state_dict"])
