@@ -35,6 +35,7 @@ def train(agent, env):
     best_moving_average = -np.inf
     n_steps = 0
 
+    print(f'Traning for {configs["train_episodes"]} episodes')
     for episode in range(configs['train_episodes']):
         step = 0
         done = False
@@ -133,7 +134,7 @@ if __name__ == '__main__':
 
         if args.agent in config_data:
             configs.update(config_data[args.agent])
-            configs['train_episodes'] = config_data[args.agent].get('train_episodes', 5001)
+            configs['train_episodes'] = config_data[args.agent].get('train_episodes', 1501)
             configs['max_steps_per_episode'] = config_data[args.agent].get('max_steps_per_episode', 250)
         else:
             raise ValueError(f"No configuration found for agent: {args.agent}")

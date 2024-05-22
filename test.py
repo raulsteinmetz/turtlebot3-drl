@@ -80,7 +80,7 @@ if __name__ == '__main__':
     parser.add_argument('--agent', type=str, default='sac', help='Specify the RL agent (sac, ddpg, td3, sac_x_hybrid, sac_x)')
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
     parser.add_argument('--episodes', type=int, default=100, help='Specify the number of test episodes')
-    parser.add_argument('--max_steps', type=int, default=250, help='Specify the step limit (for episodes)')
+    parser.add_argument('--max_steps', type=int, default=300, help='Specify the step limit (for episodes)')
     parser.add_argument('--lidar', type=int, default=0, help='Specify the number of LIDAR readings: 10, 360')
     args = parser.parse_args()
 

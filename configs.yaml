@@ -1,4 +1,4 @@
-train_episodes: 10
+train_episodes: 1500
 max_steps_per_episode: 300
 
 sac:
