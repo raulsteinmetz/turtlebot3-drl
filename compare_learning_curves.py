@@ -32,5 +32,5 @@ if __name__ == '__main__':
     parser.add_argument('--lidar', type=int, default=1, help='Specify the lidar readings: 10 or 360')
     args = parser.parse_args()
 
-    agents = ['ddpg', 'td3', 'sac', 'dreamer']
+    agents = ['sac', 'dreamer']
     plot_learning_curve(agents, args.stage, args.lidar)
