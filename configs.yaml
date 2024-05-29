@@ -1,4 +1,4 @@
-max_steps_per_episode: 300
+max_steps_per_episode: 2
 
 sac:
   alpha: 0.0003

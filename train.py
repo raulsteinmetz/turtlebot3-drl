@@ -135,7 +135,7 @@ if __name__ == '__main__':
         if args.agent in config_data:
             configs.update(config_data[args.agent])
             configs['train_episodes'] = config_data[args.agent].get('train_episodes', 5001)
-            configs['max_steps_per_episode'] = config_data[args.agent].get('max_steps_per_episode', 300)
+            configs['max_steps_per_episode'] = config_data[args.agent].get('max_steps_per_episode', 2)
         else:
             raise ValueError(f"No configuration found for agent: {args.agent}")
 
