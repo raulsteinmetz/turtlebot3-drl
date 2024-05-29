@@ -259,7 +259,7 @@ def main(config):
     while agent._step < config.steps + config.eval_every:
         ctr += 1
         logger.write()
-        if config.eval_episode_num > 0 and ctr > 2: # skips the first 2 evals
+        if config.eval_episode_num > 0 and ctr > 2 and ctr % 2 == 0: # skips the first 2 evals
             print("Start evaluation.")
             eval_policy = functools.partial(agent, training=False)
             eval_ret = tools.simulate(
