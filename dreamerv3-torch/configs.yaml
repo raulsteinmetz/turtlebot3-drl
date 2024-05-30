@@ -7,9 +7,9 @@ defaults:
   offline_evaldir: ''
   seed: 0
   deterministic_run: False
-  steps: 200000
+  steps: 300000
   parallel: False
-  eval_every: 1e4
+  eval_every: 0.5e4
   eval_episode_num: 100
   log_every: 1e4
   reset_every: 0
@@ -124,7 +124,7 @@ defaults:
   disag_action_cond: False
 
 turtle:
-  steps: 200000
+  steps: 300000
   action_repeat: 1
   envs: 1
   train_ratio: 512 # ??
