@@ -282,8 +282,6 @@ def main(config):
                 data = pd.DataFrame({'scores': eval_ret})
                 data.to_csv(f'./{logdir}/best.csv')
         
-        exit()
-        
         print("Start training.")
         state = tools.simulate(
             agent,
