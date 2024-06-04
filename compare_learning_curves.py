@@ -9,17 +9,19 @@ def plot_learning_curve(agents, stage, lidar):
     for agent in agents:
         fpath = f'best_models/lidar{lidar}/{agent}/stage{stage}/train.csv'
         data = pd.read_csv(fpath)
+        
+        # for the sake of visualisation
         data['scores'][:10] = 0.0
+        data['scores'] = data['scores'].apply(lambda x: 0 if x == -10 else (1 if x == 100 else x))
         
         ma_episodes = data['scores'][:1000 if stage == 1 and lidar == 10 else 5000].rolling(window=250, min_periods=1).mean()
         
-        # Using a smaller factor for the standard deviation
         std_factor = 0.2
         name = agent if agent != 'dreamer' else 'dreamerv3 (ours)'
         
         plt.plot(data['episode'][:1000 if stage == 1 and lidar == 10 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=2.0)
         
-        # plots the shaded region (std)
+        # plot the shaded region (std)
         plt.fill_between(data['episode'][:1000 if stage == 1 and lidar == 10 else 5000],
                          ma_episodes - std_factor * ma_episodes.std(),
                          ma_episodes + std_factor * ma_episodes.std(),
