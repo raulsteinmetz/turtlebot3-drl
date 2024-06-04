@@ -11,12 +11,12 @@ def plot_learning_curve(agents, stage, lidar):
         data = pd.read_csv(fpath)
         data['scores'][:10] = 0.0
         
-        ma_episodes_10 = data['scores'][:1000 if stage == 1 else 5000].rolling(window=25, min_periods=1).mean()
-        ma_episodes_100 = data['scores'][:1000 if stage == 1 else 5000].rolling(window=250, min_periods=1).mean()
+        ma_episodes_10 = data['scores'][:1000 if stage == 1 and lidar == 10 else 5000].rolling(window=25, min_periods=1).mean()
+        ma_episodes_100 = data['scores'][:1000 if stage == 1 and lidar == 10 else 5000].rolling(window=250, min_periods=1).mean()
 
         # plt.plot(data['episode'][:1000 if stage == 1 else 5000], ma_episodes_10, color=colors[agent], alpha=0.1, linewidth=2.0)
         name = agent if agent != 'dreamer' else 'dreamerv3 (ours)'
-        plt.plot(data['episode'][:1000 if stage == 1 else 5000], ma_episodes_100, color=colors[agent], label=f'{name}')
+        plt.plot(data['episode'][:1000 if stage == 1 and lidar == 10 else 5000], ma_episodes_100, color=colors[agent], label=f'{name}')
     
     plt.xlabel('Episodes')
     plt.ylabel('Rewards')
