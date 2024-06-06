@@ -4,9 +4,11 @@ from matplotlib import pyplot as plt
 
 def plot_learning_curve(agents, stage, lidar):
     colors = {'ddpg': 'blue', 'td3': 'green', 'sac': 'red', 'dreamer': 'purple'}
-
+    _lidar = lidar
     plt.figure(figsize=(5, 5))
     for agent in agents:
+        if int(_lidar) == 0:
+            lidar = 360 if agent == 'dreamer' else 10
         fpath = f'best_models/lidar{lidar}/{agent}/stage{stage}/train.csv'
         data = pd.read_csv(fpath)
         
@@ -14,31 +16,37 @@ def plot_learning_curve(agents, stage, lidar):
         data['scores'][:10] = 0.0
         data['scores'] = data['scores'].apply(lambda x: 0 if x == -10 else (1 if x == 100 else x))
         
-        ma_episodes = data['scores'][:1000 if stage == 1 and lidar == 10 else 5000].rolling(window=250, min_periods=1).mean()
+        # window = 500 if stage != 1 else 100
+        window = 500
+        ma_episodes = data['scores'][:600 if stage == 1 and int(_lidar) != 360  else 5000].rolling(window=window, min_periods=1).mean()
         
         std_factor = 0.2
         name = agent if agent != 'dreamer' else 'dreamerv3 (ours)'
         
-        plt.plot(data['episode'][:1000 if stage == 1 and lidar == 10 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=2.0)
+        plt.plot(data['episode'][:600 if stage == 1 and int(_lidar) != 360 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=2.0)
         
-        # plot the shaded region (std)
-        plt.fill_between(data['episode'][:1000 if stage == 1 and lidar == 10 else 5000],
-                         ma_episodes - std_factor * ma_episodes.std(),
-                         ma_episodes + std_factor * ma_episodes.std(),
-                         color=colors[agent], alpha=0.5)
+        # # plot the shaded region (std)
+        # plt.fill_between(data['episode'][:1000 if stage == 1 and int(_lidar) != 360 else 5000],
+        #                  ma_episodes - std_factor * ma_episodes.std(),
+        #                  ma_episodes + std_factor * ma_episodes.std(),
+        #                  color=colors[agent], alpha=0.5)
     
     plt.xlabel('Episodes')
     plt.ylabel('Rewards')
-    plt.title(f'Reward Moving Average (n = 250) on Stage {stage}')
+    plt.title(f'Reward Moving Average (n = {window}) on Stage {stage}')
     plt.legend()
     plt.grid(True)
-    plt.savefig(f'plots/lidar{lidar}/comparison_stage{stage}_episodes.pdf')
+    if int(_lidar) == 0:
+        print('aaa')
+        plt.savefig(f'plots/any_lidar/comparison_stage{stage}_episodes.pdf')
+    else:
+        plt.savefig(f'plots/lidar{lidar}/comparison_stage{stage}_episodes.pdf')
     plt.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot multiple RL agents' training learning curves")
     parser.add_argument('--stage', type=int, default=1, help='Specify the environment stage: 1, 2, 3, 4')
-    parser.add_argument('--lidar', type=int, default=1, help='Specify the lidar readings: 10 or 360')
+    parser.add_argument('--lidar', type=int, default=-1, help='Specify the lidar readings: 10 or 360, 0 in for dreamer 360 others 10 comparisson')
     args = parser.parse_args()
 
     agents = ['ddpg', 'sac', 'td3', 'dreamer']
