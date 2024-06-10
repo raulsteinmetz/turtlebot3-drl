@@ -13,12 +13,12 @@
         </geometry>
         <max_contacts>10</max_contacts>
         <surface>
-          <bounce/>
+          <bounce />
           <friction>
-            <ode/>
+            <ode />
           </friction>
           <contact>
-            <ode/>
+            <ode />
           </contact>
         </surface>
       </collision>
@@ -49,12 +49,12 @@
         </geometry>
         <max_contacts>10</max_contacts>
         <surface>
-          <bounce/>
+          <bounce />
           <friction>
-            <ode/>
+            <ode />
           </friction>
           <contact>
-            <ode/>
+            <ode />
           </contact>
         </surface>
       </collision>
@@ -85,12 +85,12 @@
         </geometry>
         <max_contacts>10</max_contacts>
         <surface>
-          <bounce/>
+          <bounce />
           <friction>
-            <ode/>
+            <ode />
           </friction>
           <contact>
-            <ode/>
+            <ode />
           </contact>
         </surface>
       </collision>
@@ -121,12 +121,12 @@
         </geometry>
         <max_contacts>10</max_contacts>
         <surface>
-          <bounce/>
+          <bounce />
           <friction>
-            <ode/>
+            <ode />
           </friction>
           <contact>
-            <ode/>
+            <ode />
           </contact>
         </surface>
       </collision>
