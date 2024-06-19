@@ -16,8 +16,10 @@ def plot_learning_curve(agents, stage, lidar):
         data['scores'][:10] = 0.0
         data['scores'] = data['scores'].apply(lambda x: 0 if x == -10 else (1 if x == 100 else x))
         
-        # window = 500 if stage != 1 else 100
-        window = 500
+        if stage == 1:
+            window = 100
+        else: 
+            window = 500
         ma_episodes = data['scores'][:600 if stage == 1 and int(_lidar) != 360  else 5000].rolling(window=window, min_periods=1).mean()
         
         std_factor = 0.2
