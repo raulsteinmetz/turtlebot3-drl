@@ -26,12 +26,6 @@ def plot_learning_curve(agents, stage, lidar):
         name = agent if agent != 'dreamer' else 'dreamerv3 (ours)'
         
         plt.plot(data['episode'][:600 if stage == 1 and int(_lidar) != 360 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=2.0)
-        
-        # # plot the shaded region (std)
-        # plt.fill_between(data['episode'][:1000 if stage == 1 and int(_lidar) != 360 else 5000],
-        #                  ma_episodes - std_factor * ma_episodes.std(),
-        #                  ma_episodes + std_factor * ma_episodes.std(),
-        #                  color=colors[agent], alpha=0.5)
     
     plt.xlabel('Episodes')
     plt.ylabel('Rewards')
