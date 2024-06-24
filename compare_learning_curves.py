@@ -29,11 +29,10 @@ def plot_learning_curve(agents, stage, lidar):
     
     plt.xlabel('Episodes')
     plt.ylabel('Rewards')
-    plt.title(f'Reward Moving Average (n = {window}) on Stage {stage}')
+    plt.title(f'Stage {stage}')
     plt.legend()
     plt.grid(True)
     if int(_lidar) == 0:
-        print('aaa')
         plt.savefig(f'plots/any_lidar/comparison_stage{stage}_episodes.pdf')
     else:
         plt.savefig(f'plots/lidar{lidar}/comparison_stage{stage}_episodes.pdf')
