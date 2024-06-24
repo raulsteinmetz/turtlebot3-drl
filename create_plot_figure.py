@@ -3,14 +3,21 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 def plot_learning_curves(agents, stages, lidar):
-    colors = {'ddpg': 'red', 'td3': 'blue', 'sac': 'gray', 'dreamer': 'darkgreen'} 
+    colors = {'ddpg': 'orange', 'td3': 'blue', 'sac': 'red', 'dreamer': 'green'} 
     _lidar = lidar
     
-    fig, axs = plt.subplots(3, 2, figsize=(15, 15))
-    axs = axs.flatten()
+    # First figure with 3x2 layout
+    fig1, axs1 = plt.subplots(3, 2, figsize=(10, 15))  # 3 rows, 2 columns
+    axs1 = axs1.flatten()
+    
+    # Second figure with 2x3 layout
+    fig2, axs2 = plt.subplots(2, 3, figsize=(15, 10))  # 2 rows, 3 columns
+    axs2 = axs2.flatten()
     
     for i, stage in enumerate(stages):
-        ax = axs[i]
+        ax1 = axs1[i]
+        ax2 = axs2[i]
+        
         for agent in agents:
             if int(_lidar) == 0:
                 lidar = 360 if agent == 'dreamer' else 10
@@ -25,24 +32,34 @@ def plot_learning_curves(agents, stages, lidar):
                 window = 100
             else: 
                 window = 500
-            ma_episodes = data['scores'][:600 if stage == 1 and int(_lidar) != 360  else 5000].rolling(window=window, min_periods=1).mean()
+            ma_episodes = data['scores'][:600 if stage == 1 and int(_lidar) != 360 else 5000].rolling(window=window, min_periods=1).mean()
 
             name = agent if agent != 'dreamer' else 'TurtleDreamer (ours)'
             
-            ax.plot(data['episode'][:600 if stage == 1 and int(_lidar) != 360 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=3.0)
+            ax1.plot(data['episode'][:600 if stage == 1 and int(_lidar) != 360 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=3.0, alpha=0.4 if agent != 'dreamer' else 1)
+            ax2.plot(data['episode'][:600 if stage == 1 and int(_lidar) != 360 else 5000], ma_episodes, color=colors[agent], label=f'{name}', linewidth=3.0, alpha=0.4 if agent != 'dreamer' else 1)
         
-        ax.set_xlabel('Episodes')
-        ax.set_ylabel('Rewards')
-        ax.set_title(f'Stage {stage}')
-        ax.legend()
-        ax.grid(False)
+        ax1.set_xlabel('Episodes')
+        ax1.set_ylabel('Rewards')
+        ax1.set_title(f'Stage {stage}')
+        ax1.legend()
+        ax1.grid(False)
+        
+        ax2.set_xlabel('Episodes')
+        ax2.set_ylabel('Rewards')
+        ax2.set_title(f'Stage {stage}')
+        ax2.legend()
+        ax2.grid(False)
     
     plt.tight_layout()
     if int(_lidar) == 0:
-        plt.savefig(f'plots/any_lidar/comparison_stages_episodes.pdf')
+        fig1.savefig(f'plots/any_lidar/comparison_stages_episodes_3x2.pdf')
+        fig2.savefig(f'plots/any_lidar/comparison_stages_episodes_2x3.pdf')
     else:
-        plt.savefig(f'plots/lidar{lidar}/comparison_stages_episodes.pdf')
-    plt.close()
+        fig1.savefig(f'plots/lidar{lidar}/comparison_stages_episodes_3x2.pdf')
+        fig2.savefig(f'plots/lidar{lidar}/comparison_stages_episodes_2x3.pdf')
+    plt.close(fig1)
+    plt.close(fig2)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Plot multiple RL agents' training learning curves")
@@ -50,6 +67,5 @@ if __name__ == '__main__':
     parser.add_argument('--lidar', type=int, default=-1, help='Specify the lidar readings: 10 or 360, 0 for dreamer 360 others 10 comparison')
     args = parser.parse_args()
 
-    
     agents = ['ddpg', 'sac', 'td3', 'dreamer']
     plot_learning_curves(agents, args.stages, args.lidar)
