@@ -1,101 +1,188 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
-  <model name='obstacles_stage3'>
+  <model name='inner_walls'>
     <pose frame=''>0 0 0 0 0 0</pose>
-    <link name='obstacle'>
-      <!-- Define the U-shaped obstacle using three box geometries -->
-      
-      <!-- single wall -->
-      <collision name='single_wall'>
-        <pose>0 1.7 0 0 0 0.8</pose> <!-- Adjust pose as needed -->
+    <link name='inner_wall_1'>
+      <collision name='inner_wall_1_collision'>
         <geometry>
           <box>
-            <size>1.2 0.3 0.8</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
       </collision>
-      <visual name='single_wall'>
-        <pose>0 1.7 0 0 0 0.8</pose> <!-- Adjust pose as needed -->
+      <visual name='inner_wall_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.2 0.3 0.8</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
       </visual>
-
-      <!-- little square -->
-      <collision name='little_square'>
-        <pose>-0.2 -1.45 0 0 0 0</pose> <!-- Adjust pose as needed -->
+      <pose frame=''>-2.0 -1.5 0 0 -0 0</pose>
+    </link>
+    <link name='inner_wall_2'>
+      <collision name='inner_wall_2_collision'>
         <geometry>
           <box>
-            <size>0.2 0.2 1.0</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
       </collision>
-      <visual name='little_square'>
-        <pose>-0.2 -1.45 0 0 0 0</pose> <!-- Adjust pose as needed -->
+      <visual name='inner_wall_2_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.2 0.2 1.0</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
       </visual>
-
-      <!-- composite wall 1 -->
-      <collision name='compo_wall_1'>
-        <pose>-0.2 -0.2 0 0 0 0.8</pose> <!-- Adjust pose as needed -->
+      <pose frame=''>-0.5 -2.0 0 0 0 -1.5708</pose>
+    </link>
+    <link name='inner_wall_3'>
+      <collision name='inner_wall_3_collision'>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
       </collision>
-      <visual name='compo_wall_1'>
-        <pose>-0.2 -0.2 0 0 0 0.8</pose> <!-- Adjust pose as needed -->
+      <visual name='inner_wall_3_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
       </visual>
-
-      <!-- composite wall 2 -->
-      <collision name='compo_wall_2'>
-        <pose>-0.8 0 0 0 0 -0.75</pose> <!-- Adjust pose as needed -->
+      <pose frame=''>1.0 -1.0 0 0 -0 1.5708</pose>
+    </link>
+    <link name='inner_wall_4'>
+      <collision name='inner_wall_4_collision'>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
       </collision>
-      <visual name='compo_wall_2'>
-        <pose>-0.8 0 0 0 0 -0.75</pose> <!-- Adjust pose as needed -->
+      <visual name='inner_wall_4_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
       </visual>
-
-      <!-- composite wall 3 -->
-      <collision name='compo_wall_3'>
-        <pose>0.6 -.33 0 0 0 -0.75</pose> <!-- Adjust pose as needed -->
+      <pose frame=''>1.2 1.9 0 0 0 -1.5708</pose>
+    </link>
+    <link name='inner_wall_5'>
+      <collision name='inner_wall_5_collision'>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
       </collision>
-      <visual name='compo_wall_3'>
-        <pose>0.6 -.33 0 0 0 -0.75</pose> <!-- Adjust pose as needed -->
+      <visual name='inner_wall_5_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.2 0.3 1</size> <!-- Adjust size as needed -->
+            <size>1 0.15 0.5</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
       </visual>
-
-     
+      <pose frame=''>1.9 0.4 0 0 -0 0</pose>
+    </link>
+    <link name='inner_wall_6'>
+      <collision name='inner_wall_6_collision'>
+        <geometry>
+          <box>
+            <size>1 0.15 0.5</size>
+          </box>
+        </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
+      </collision>
+      <visual name='inner_wall_6_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>1 0.15 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <pose frame=''>-0.5 1.5 0 0 -0 0</pose>
+    </link>
+    <link name='inner_wall_7'>
+      <collision name='inner_wall_7_collision'>
+        <geometry>
+          <box>
+            <size>1 0.15 0.5</size>
+          </box>
+        </geometry>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
+      </collision>
+      <visual name='inner_wall_7_visual'>
+        <pose frame=''>0 0 0.25 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>1 0.15 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+      <pose frame=''>-1.2 0.092 0 0 0 -1.5708</pose>
     </link>
     <static>1</static>
   </model>
