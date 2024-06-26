@@ -113,7 +113,7 @@ class Agent:
         """
         Load the saved states of all networks from checkpoints.
         """
-        print('... loading models ...')
+        print(f'... loading models ... -> {self.checkpoint_dir}')
         self.actor.load_checkpoint()
         self.value.load_checkpoint()
         self.target_value.load_checkpoint()
