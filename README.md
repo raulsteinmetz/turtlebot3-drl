@@ -3,11 +3,12 @@
 This project hosts code for training Deep Reinforcement Learning algorithms in the TurtleBot3 navigation task using ROS2. It contains:
 - Multiple environment setups on Gazebo
 - Implemented DRL algorithms - Dreamerv3, SAC, DDPG, TD3
+<br>
 
 <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/9f881aac-f87b-4b63-a323-655b47e3a18f" width="300"/>
 <img src="https://github.com/raulsteinmetz/turtlebot3-drl/assets/85199336/007d7844-ebdb-47c3-b318-69e393d3c91d" width="300"/>
 
-
+<br>
 
 ## Configuring ROS packages
 Refer to `./turtlebot3_gazebo/README.md`
