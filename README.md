@@ -1,6 +1,6 @@
 # Deep Reinforcement Learning for TurtleBot3 Navigation
 
-This project hosts code for training Deep Reinforcement Learning algorithms in the TurtleBot3 navigation task using ROS2. It contains:
+Training Deep Reinforcement Learning algorithms in the TurtleBot3 navigation task using ROS2. It contains:
 - Multiple environment setups on Gazebo
 - Implemented DRL algorithms - Dreamerv3, SAC, DDPG, TD3
 <br>
