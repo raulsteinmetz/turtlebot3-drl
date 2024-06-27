@@ -1,4 +1,4 @@
-# Deep Reinforcement Learning for TurtleBot3 Navigation
+# Deep Reinforcement Learning for Terrestrial Navigation
 
 Training Deep Reinforcement Learning algorithms in the TurtleBot3 navigation task using ROS2. It contains:
 - Multiple environment setups on Gazebo
