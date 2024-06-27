@@ -25,3 +25,9 @@ Refer to `./TRAIN.md`
 -  `./turtle_env` keeps the gym code for the TurtleBot3 task
 -  `./turtlebot3_gazebo` keeps the ROS2 files needed for configuration  
 
+## The code on this repository was inspired by:
+
+- [NM512/dreamerv3-torch](https://github.com/NM512/dreamerv3-torch)
+- [danijar/dreamerv3](https://github.com/danijar/dreamerv3)
+- [philtabor/Actor-Critic-Methods-Paper-To-Code](https://github.com/philtabor/Actor-Critic-Methods-Paper-To-Code)
+- [dranaju/project](https://github.com/dranaju/project)
