@@ -1,2 +1,0 @@
-separate models directory in lidar360 and lidar10
-system to repeat missed targets more often
