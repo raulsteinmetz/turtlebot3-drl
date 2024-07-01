@@ -33,7 +33,7 @@ def plot_learning_curves(agents, stages, lidar):
             data['scores'][:10] = 0.0
             data['scores'] = data['scores'].apply(lambda x: 0 if x == -10 else (1 if x == 100 else x))
             
-            if stage == 1 and lidar == 10:
+            if stage == 1 and (lidar == 10 or _lidar == 0):
                 window = 100
                 max_episode = 1000
             else: 
@@ -73,9 +73,9 @@ def plot_learning_curves(agents, stages, lidar):
 
     plt.tight_layout(rect=[0, 0.1, 1, 0.95])
     if int(_lidar) == 0:
-        fig.savefig(f'plots/any_lidar/comparison_stages_episodes_2x3.pdf', format='pdf', bbox_inches='tight')
+        fig.savefig(f'plots/any_lidar/comparison_stages_episodes_2x3.png', format='png', bbox_inches='tight')
     else:
-        fig.savefig(f'plots/lidar{lidar}/comparison_stages_episodes_2x3.pdf', format='pdf', bbox_inches='tight')
+        fig.savefig(f'plots/lidar{lidar}/comparison_stages_episodes_2x3.png', format='png', bbox_inches='tight')
     plt.show()
 
 if __name__ == '__main__':
