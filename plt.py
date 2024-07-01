@@ -33,13 +33,15 @@ def plot_learning_curves(agents, stages, lidar):
             data['scores'][:10] = 0.0
             data['scores'] = data['scores'].apply(lambda x: 0 if x == -10 else (1 if x == 100 else x))
             
-            if stage == 1 and (lidar == 10 or _lidar == 0):
+            if stage == 1 and (lidar == 10 or int(_lidar) == 0):
                 window = 100
                 max_episode = 1000
             else: 
                 window = 500
                 max_episode = 5000
-            
+
+             
+
             ma_episodes, std_episodes = moving_average_std(data[['episode', 'scores']], window)
             ma_episodes = ma_episodes[:max_episode]
             std_episodes = std_episodes[:max_episode]
